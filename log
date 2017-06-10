@@ -1,15 +1,3 @@
-# db-algorithms
-
-how to run:
-```
-git clone https://github.com/0000marcell/db-algorithms
-cd db-algorithms
-bundle install
-ruby merge.rb
-```
-
-MERGE OUTPUT:
-
 MICHAEL MOVES TO BERLIN
 NADJA MOVES TO POTSDAM
 MICHAEL MOVES TO POTSDAM
