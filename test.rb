@@ -1,4 +1,5 @@
 require 'table_print'
+require_relative './print'
 
 main = {
   "dic" =>  {
@@ -11,7 +12,11 @@ main = {
   },
   "val_vec" => [1, 1, 1]
 }
-
-
-puts trans_to_row(main["dic"])
-#tp main["dic"], "fname", "city"
+arr = [0, 0, 1]
+arr.each_with_index do |item, index|
+  if item == 0
+    arr.delete_at(index - 1)
+  end
+  puts item
+end
+puts "result #{arr}"

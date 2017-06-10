@@ -1,4 +1,6 @@
 require 'table_print'
+require 'byebug'
+require_relative './print'
 
 main = {
   "dic" =>  {
@@ -9,7 +11,9 @@ main = {
     "fname" => [2, 1, 0],
     "city" => [0, 1, 0]
   },
-  "val_vec" => [1, 1, 1]
+  "val_vec" => {
+    "valid" => [1, 1, 1]
+  }
 }
 
 dif_buf = {
@@ -21,7 +25,9 @@ dif_buf = {
     "fname" => [],
     "city" =>  []
   },
-  "val_vec" => []
+  "val_vec" => {
+    "valid" => []
+  }
 }
 
 # finds the pos of the element on a given array
@@ -37,67 +43,82 @@ def find_pos(val, arr)
 end
 
 # insert val
-def save_val(fname, city, dif_buf, main)
-  # insert in the dif bug
-  fname_pos = find_pos(fname, dif_buf["dic"]["fname"])
-  if(fname_pos == false)
-    dif_buf["dic"]["fname"] << fname
-    fname_pos = dif_buf["dic"]["fname"].length - 1
-  end
-  city_pos = find_pos(city, dif_buf["dic"]["city"])
-  if(city_pos == false)
-    dif_buf["dic"]["city"] << city 
-    city_pos = dif_buf["dic"]["city"].length - 1
-  end
-  dif_buf["av"]["fname"] << fname_pos 
-  dif_buf["av"]["city"] << city_pos 
-  dif_buf["val_vec"] << 1 
-  
-  # invalidate in the main, name is the main index
-  fname_pos = find_pos(fname, main["dic"]["fname"])
-  if fname_pos
-    main["val_vec"][fname_pos] = 0
-  end
+def insert(obj, dif_buf, main, pk)
+  obj.each do |k, v|
+    dic_pos = find_pos(v, dif_buf["dic"][k])
+    if(dic_pos == false)
+      dif_buf["dic"][k] << v
+      dic_pos = dif_buf["dic"][k].length - 1
+    else
+      if(k == pk)
+        av_pos = find_pos(dic_pos, dif_buf["av"][k])
+        dif_buf["val_vec"]["valid"][av_pos] = 0
+      end
+    end
 
-  # invalidate in the dif_buf, 
+    if k == pk
+      dif_buf["val_vec"]["valid"] << 1
+      main_dic_pos = find_pos(v, main["dic"][k])
+      main_av_pos = find_pos(main_dic_pos, main["av"][k])
+      if main_av_pos
+        main["val_vec"]["valid"][main_av_pos] = 0
+      end
+    end
+    dif_buf["av"][k] << dic_pos 
+  end
 end
 
-def print_tables(dif_buf, main)
-  main_rows = [] 
-  dif_rows = []
-  5.times do |i|
-    main_rows << {"fname" => main["dic"]["fname"][i], 
-         "city" => main["dic"]["city"][i],
-         "attr_fname" => main["av"]["fname"][i],
-         "attr_city" => main["av"]["city"][i], 
-         "val_vec" => main["val_vec"][i]}
-    dif_rows << {"fname" => dif_buf["dic"]["fname"][i], 
-         "city" => dif_buf["dic"]["city"][i],
-         "attr_fname" => dif_buf["av"]["fname"][i],
-         "attr_city" => dif_buf["av"]["city"][i], 
-         "val_vec" => dif_buf["val_vec"][i]}
-  end
-  puts "MAIN"
-  puts "====================================="
-  tp main_rows, "fname", "city", "attr_fname", 
-    "attr_city", "val_vec"
-  puts "DIFERENCIAL BUFFER"
-  puts "====================================="
-  tp dif_rows, "fname", "city", "attr_fname", 
-    "attr_city", "val_vec"
+def move_to_history(obj)
+  vv = obj["val_vec"]["valid"]
+    .reject.with_index do |item, index|
+    if item == 0
+      obj["av"].each do |k, v|
+        obj["av"][k].delete_at(index)
+      end
+      true
+    else
+      false
+    end
+  end 
+  obj["val_vec"]["valid"] = vv
 end
 
-puts "BEFORE INSERTS"
-print_tables(dif_buf, main)
-# michael moves to berlin
-save_val("Michael", "Berlin", dif_buf, main)
-# nadja moves to potsdam
-save_val("Nadja", "Potsdam", dif_buf, main)
-# michael moves to potsdam
-save_val("Michael", "Potsdam", dif_buf, main)
+def print(vec, val)
+  puts "========"
+  puts "#{val} DIC"
+  print_table(vec["dic"], ["fname", "city"])
+  puts "======="
+  puts "#{val} AV"
+  print_table(vec["av"], ["fname", "city"])
+  puts "======="
+  puts "#{val} VV"
+  print_table(vec["val_vec"], ["valid"])
+  puts "======"
+end
+
+puts "MICHAEL MOVES TO BERLIN"
+insert({"fname" => "Michael", "city" => "Berlin"}, 
+         dif_buf, main, "fname")
+puts "NADJA MOVES TO POTSDAM"
+insert({"fname" => "Nadja", "city" => "Potsdam"}, 
+         dif_buf, main, "fname")
+puts "MICHAEL MOVES TO POTSDAM"
+insert({"fname" => "Michael", "city" => "Potsdam"}, 
+         dif_buf, main, "fname")
+puts "HANNA INSERTED"
 # hanna is inserted 
-save_val("Hanna", "Dresden", dif_buf, main)
-
-puts "AFTER INSERTS"
-print_tables(dif_buf, main)
-
+insert({"fname" => "Hanna", "city" => "Dresden"}, 
+         dif_buf, main, "fname")
+puts "DIF BUF AFTER INSERTS"
+print(dif_buf, "DIF")
+puts "MAIN AFTER INSERTS"
+print(main, "MAIN")
+puts "MOVE TO HISTORY"
+move_to_history(dif_buf)
+puts "MAIN BEFORE MOVE TO HISTORY"
+print(main, "MAIN")
+move_to_history(main)
+puts "DIF BUF AFTER MOVE TO HISTORY"
+print(dif_buf, "DIF")
+puts "MAIN AFTER MOVE TO HISTORY"
+print(main, "MAIN")
