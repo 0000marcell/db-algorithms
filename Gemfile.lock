@@ -1,0 +1,20 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    faker (1.7.3)
+      i18n (~> 0.5)
+    i18n (0.8.4)
+    table_print (1.5.6)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  faker
+  table_print
+
+RUBY VERSION
+   ruby 2.3.1p112
+
+BUNDLED WITH
+   1.12.5
