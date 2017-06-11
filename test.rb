@@ -12,11 +12,9 @@ main = {
   },
   "val_vec" => [1, 1, 1]
 }
-arr = [0, 0, 1]
-arr.each_with_index do |item, index|
-  if item == 0
-    arr.delete_at(index - 1)
+
+main["dic"].each do |k|
+  main["dic"][k].each do |value|
+    puts value
   end
-  puts item
 end
-puts "result #{arr}"
