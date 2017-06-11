@@ -1,6 +1,6 @@
 # db-algorithms
 
-how to run:
+how to run(assuming you already have ruby and bundle installed):
 ```
 git clone https://github.com/0000marcell/db-algorithms
 cd db-algorithms
@@ -102,4 +102,3 @@ dif vv
 No data.
 **************
 ```
-
