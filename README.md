@@ -9,122 +9,121 @@ ruby merge.rb
 ```
 
 MERGE OUTPUT:
-
-MICHAEL MOVES TO BERLIN
-NADJA MOVES TO POTSDAM
-MICHAEL MOVES TO POTSDAM
-HANNA INSERTED
-DIF BUF AFTER INSERTS
-========
-DIF DIC
+michael moves to berlin
+nadja moves to potsdam
+michael moves to potsdam
+hanna inserted
+dif buf after inserts
+**************
+dif dic
 FNAME   | CITY   
 --------|--------
 Michael | Berlin 
 Nadja   | Potsdam
 Hanna   | Dresden
-=======
-DIF AV
+*************
+dif av
 FNAME | CITY
 ------|-----
 0     | 0   
 1     | 1   
 0     | 1   
 2     | 2   
-=======
-DIF VV
+**************
+dif vv
 VALID
 -----
 0    
 1    
 1    
 1    
-======
-MAIN AFTER INSERTS
-========
-MAIN DIC
+**************
+main after inserts
+**************
+main dic
 FNAME   | CITY          
 --------|---------------
 Albert  | Berlin        
 Michael | London        
 Nadja   | Method Missing
-=======
-MAIN AV
+*************
+main av
 FNAME | CITY
 ------|-----
 2     | 0   
 1     | 1   
 0     | 0   
-=======
-MAIN VV
+**************
+main vv
 VALID
 -----
 0    
 0    
 1    
-======
-MOVE TO HISTORY
-MAIN BEFORE MOVE TO HISTORY
-========
-MAIN DIC
+**************
+move to history
+main before move to history
+**************
+main dic
 FNAME   | CITY          
 --------|---------------
 Albert  | Berlin        
 Michael | London        
 Nadja   | Method Missing
-=======
-MAIN AV
+*************
+main av
 FNAME | CITY
 ------|-----
 2     | 0   
 1     | 1   
 0     | 0   
-=======
-MAIN VV
+**************
+main vv
 VALID
 -----
 0    
 0    
 1    
-======
-DIF BUF AFTER MOVE TO HISTORY
-========
-DIF DIC
+**************
+dif buf after move to history
+**************
+DIF dic
 FNAME   | CITY   
 --------|--------
 Michael | Berlin 
 Nadja   | Potsdam
 Hanna   | Dresden
-=======
-DIF AV
+*************
+DIF av
 FNAME | CITY
 ------|-----
 1     | 1   
 0     | 1   
 2     | 2   
-=======
-DIF VV
+**************
+DIF vv
 VALID
 -----
 1    
 1    
 1    
-======
-MAIN AFTER MOVE TO HISTORY
-========
-MAIN DIC
+**************
+main after move to history
+**************
+main dic
 FNAME   | CITY          
 --------|---------------
 Albert  | Berlin        
 Michael | London        
 Nadja   | Method Missing
-=======
-MAIN AV
+*************
+main av
 FNAME | CITY
 ------|-----
 1     | 1   
-=======
-MAIN VV
+**************
+main vv
 VALID
 -----
 1    
-======
+**************

@@ -84,41 +84,41 @@ def move_to_history(obj)
 end
 
 def print(vec, val)
-  puts "========"
-  puts "#{val} DIC"
+  puts "**************"
+  puts "#{val} dic"
   print_table(vec["dic"], ["fname", "city"])
-  puts "======="
-  puts "#{val} AV"
+  puts "*************"
+  puts "#{val} av"
   print_table(vec["av"], ["fname", "city"])
-  puts "======="
-  puts "#{val} VV"
+  puts "**************"
+  puts "#{val} vv"
   print_table(vec["val_vec"], ["valid"])
-  puts "======"
+  puts "**************"
 end
 
-puts "MICHAEL MOVES TO BERLIN"
+puts "michael moves to berlin"
 insert({"fname" => "Michael", "city" => "Berlin"}, 
          dif_buf, main, "fname")
-puts "NADJA MOVES TO POTSDAM"
+puts "nadja moves to potsdam"
 insert({"fname" => "Nadja", "city" => "Potsdam"}, 
          dif_buf, main, "fname")
-puts "MICHAEL MOVES TO POTSDAM"
+puts "michael moves to potsdam"
 insert({"fname" => "Michael", "city" => "Potsdam"}, 
          dif_buf, main, "fname")
-puts "HANNA INSERTED"
+puts "hanna inserted"
 # hanna is inserted 
 insert({"fname" => "Hanna", "city" => "Dresden"}, 
          dif_buf, main, "fname")
-puts "DIF BUF AFTER INSERTS"
-print(dif_buf, "DIF")
-puts "MAIN AFTER INSERTS"
-print(main, "MAIN")
-puts "MOVE TO HISTORY"
+puts "dif buf after inserts"
+print(dif_buf, "dif")
+puts "main after inserts"
+print(main, "main")
+puts "move to history"
 move_to_history(dif_buf)
-puts "MAIN BEFORE MOVE TO HISTORY"
-print(main, "MAIN")
+puts "main before move to history"
+print(main, "main")
 move_to_history(main)
-puts "DIF BUF AFTER MOVE TO HISTORY"
+puts "dif buf after move to history"
 print(dif_buf, "DIF")
-puts "MAIN AFTER MOVE TO HISTORY"
-print(main, "MAIN")
+puts "main after move to history"
+print(main, "main")
