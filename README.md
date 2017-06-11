@@ -9,6 +9,7 @@ ruby merge.rb
 ```
 
 MERGE OUTPUT:
+```
 michael moves to berlin
 nadja moves to potsdam
 michael moves to potsdam
@@ -127,3 +128,4 @@ VALID
 -----
 1    
 **************
+```
