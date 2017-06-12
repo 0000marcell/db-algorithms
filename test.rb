@@ -13,8 +13,7 @@ main = {
   "val_vec" => [1, 1, 1]
 }
 
-main["dic"].each do |k|
-  main["dic"][k].each do |value|
-    puts value
-  end
+arr = []
+if !arr.length
+  puts 'zero'
 end
