@@ -12,8 +12,8 @@ main = {
   },
   "val_vec" => [1, 1, 1]
 }
-
-arr = []
-if !arr.length
-  puts 'zero'
+first = 0
+last = 10
+(first..last).each do |n|
+  puts n
 end
