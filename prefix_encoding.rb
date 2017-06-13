@@ -1,4 +1,4 @@
-require_relative './lib/compression'
+require_relative './lib/utils'
 
 # assuming the av is already sorted by the 
 # value with most occurences 
@@ -21,6 +21,8 @@ def prefix_encode(column)
 end
 
 rows = generate_data()
+rows = sort_list(rows, "country")
+tp rows, ["name", "address", "country"]
 
 # divide the table in columns
 columns = column_layout(rows)

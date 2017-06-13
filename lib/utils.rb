@@ -1,6 +1,21 @@
 require 'table_print'
 require 'faker'
 
+def sort_list(list, k)
+  return list if list.size <= 1
+  swapped = true
+  while swapped do
+    swapped = false
+    0.upto(list.size-2) do |i|
+      if list[i][k] > list[i+1][k]
+        list[i][k], list[i+1][k] = list[i+1][k], list[i][k]
+        swapped = true
+      end
+    end    
+  end
+  list
+end
+
 def generate_data()
   # create a table with random values and a predominant 
   # value for country
@@ -13,20 +28,6 @@ def generate_data()
            }
     rows.push(obj)
   end
-  # sort the rows by country population, 
-  # because we dont have this agregates in this case is china
-  s_row = []
-  r_row = []
-  rows.each_with_index do |v, i|
-    if v["country"] == "CN"
-      s_row.push(rows[i])
-    else
-      r_row.push(rows[i])
-    end
-  end
-  rows = s_row + r_row
-  puts "sorted generated row"
-  tp rows, ["name", "address", "country"]
   rows
 end
 
