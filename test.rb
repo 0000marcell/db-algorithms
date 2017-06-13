@@ -12,8 +12,7 @@ main = {
   },
   "val_vec" => [1, 1, 1]
 }
-first = 0
-last = 10
-(first..last).each do |n|
-  puts n
-end
+
+x = 2
+if x == x then c_pos = 3 end
+puts c_pos

@@ -20,11 +20,13 @@ def generate_data()
   # create a table with random values and a predominant 
   # value for country
   countries = ['CN', 'CN', 'CN', 'USA', 'GER']
+  gender = ["M", "F"]
   rows = []
   10.times do
     obj = {"name" => Faker::Name.name, 
            "address" => Faker::Address.secondary_address,
-           "country" => countries[rand(0..4)]
+           "country" => countries[rand(0..4)],
+           "gender" => gender[rand(0..1)]
            }
     rows.push(obj)
   end
