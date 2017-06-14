@@ -13,6 +13,6 @@ main = {
   "val_vec" => [1, 1, 1]
 }
 
-x = 2
-if x == x then c_pos = 3 end
-puts c_pos
+arr1 = [1, 2, 3, 4, 5]
+arr2 = [2, 3]
+puts arr1 & arr2

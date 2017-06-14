@@ -4,15 +4,18 @@ require_relative './lib/utils'
 def early_materialization(db)
   aggregate = 0
   db["gender"]["dic"].each_with_index do |v, i|
-    if v == "M" then c_pos = i end
-    db["gender"]["av"].each_with_index do |v, i|
-      if v == c_pos 
-        av_pos = db["country"]["av"][i]
-        dic_value = db["country"]["dic"][av_pos]
-        if dic_value == "GER"
-          aggregate = aggregate + 1
+    if v == "M" 
+      c_pos = i 
+      db["gender"]["av"].each_with_index do |v, i|
+        if v == c_pos 
+          av_pos = db["country"]["av"][i]
+          dic_value = db["country"]["dic"][av_pos]
+          if dic_value == "GER"
+            aggregate = aggregate + 1
+          end
         end
       end
+      break
     end
   end
   aggregate 
