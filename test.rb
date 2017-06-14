@@ -13,6 +13,6 @@ main = {
   "val_vec" => [1, 1, 1]
 }
 
-arr1 = [1, 2, 3, 4, 5]
-arr2 = [2, 3]
-puts arr1 & arr2
+10.times do |i|
+  puts i
+end
