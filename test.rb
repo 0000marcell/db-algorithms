@@ -13,6 +13,6 @@ main = {
   "val_vec" => [1, 1, 1]
 }
 
-x = 2
-if x == x then c_pos = 3 end
-puts c_pos
+10.times do |i|
+  puts i
+end
