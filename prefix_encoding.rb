@@ -21,22 +21,9 @@ def prefix_encode(column)
 end
 
 rows = generate_data()
-rows = bubble_sort(rows, "country")
+bubble_sort(rows, "country")
 tp rows, ["name", "address", "country"]
-
-# divide the table in columns
-columns = column_layout(rows)
-
-# create obj for tables
-db = {}
-columns.each do |k, v|
-  db[k] = {"dic" => [], "av" => []}
-end
-
-# create dic and av
-db["country"]["dic"] = create_dic(columns["country"])
-db["country"]["av"] = create_av(columns["country"],
-                               db["country"]["dic"])
+db = create_db(rows)
 prefix_encode(db["country"])
 puts "final result prefix encoded!"
 puts "av *****"
