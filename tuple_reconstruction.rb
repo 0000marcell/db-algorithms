@@ -4,7 +4,7 @@ require_relative './lib/tuple_reconstruction'
 
 # tuple reconstruction with 1 table
 rows = generate_data()
-rows = sort_list(rows, "country")
+rows = bubble_sort(rows, "country")
 tp rows, ["name", "address", "country"]
 columns = column_layout(rows)
 

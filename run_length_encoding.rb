@@ -2,7 +2,7 @@ require_relative './lib/utils'
 require_relative './lib/run_length_encoding'
 
 rows = generate_data()
-rows = sort_list(rows, "country")
+rows = bubble_sort(rows, "country")
 tp rows, ["name", "address", "country"]
 columns = column_layout(rows)
 

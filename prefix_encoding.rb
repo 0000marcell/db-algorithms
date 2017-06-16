@@ -21,7 +21,7 @@ def prefix_encode(column)
 end
 
 rows = generate_data()
-rows = sort_list(rows, "country")
+rows = bubble_sort(rows, "country")
 tp rows, ["name", "address", "country"]
 
 # divide the table in columns

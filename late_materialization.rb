@@ -27,7 +27,7 @@ def late_materialization(db)
 end
 
 rows = generate_data()
-rows = sort_list(rows, "country")
+rows = bubble_sort(rows, "country")
 tp rows, ["name", "address", "country", "gender"]
 columns = column_layout(rows)
 
