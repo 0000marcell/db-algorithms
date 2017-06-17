@@ -118,7 +118,7 @@ end
 # returns the item pos
 def bin_search(array, val, from=0, to=nil)
   if !to then to = array.count - 1 end
-  if from >= to then return "not found" end
+  if from > to then return "not found" end
   mid = (from + to)/2
   if val < array[mid] 
     return bin_search array, val, from, mid - 1
@@ -133,7 +133,7 @@ end
 def create_av(column, dic)
   av = []
   dic_map = {}
-  column.each_with_index do |val, i|
+  column.each do |val|
     res = 
       bin_search(dic, val)
     av.push(res) 
