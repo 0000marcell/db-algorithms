@@ -27,17 +27,8 @@ def late_materialization(db)
 end
 
 rows = generate_data()
-rows = bubble_sort(rows, "country")
+quick_sort(rows, "country")
 tp rows, ["name", "address", "country", "gender"]
-columns = column_layout(rows)
-
-db = {}
-columns.each do |k, v|
-  db[k] = {}
-  db[k]["dic"] = create_dic(columns[k])
-  db[k]["av"] = create_av(columns[k],
-                          db[k]["dic"])
-end
-
+db = create_db(rows)
 puts "number of german males"
 puts late_materialization(db).length

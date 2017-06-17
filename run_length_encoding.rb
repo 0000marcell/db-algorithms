@@ -1,11 +1,16 @@
 require_relative './lib/utils'
 require_relative './lib/run_length_encoding'
+require 'benchmark'
 
-rows = generate_data()
+rows = generate_data(5000)
 quick_sort(rows, "country")
-tp rows, ["name", "address", "country"]
+#tp rows, ["name", "address", "country"]
 db = create_db(rows)
-run_length_encoding(db["country"])
+Benchmark.bm do |bm|
+  bm.report("run length") do
+    run_length_encoding(db["country"])
+  end
+end
 puts "final result prefix encoded!"
 puts "av *****"
 puts db["country"]["av"]
